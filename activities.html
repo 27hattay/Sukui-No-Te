@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activities | Sukui No Te</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="activities.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.png" alt="Sukui No Te" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#mission">Mission</a></li>
+        <li><a href="activities.html" style="color: var(--blue);">Activities</a></li>
+        <li><a href="index.html#join" class="nav-cta">Join Us</a></li>
+      </ul>
+      <button class="nav-toggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <ul class="nav-mobile" id="mobileMenu">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#mission">Mission</a></li>
+      <li><a href="activities.html">Activities</a></li>
+      <li><a href="index.html#join">Join Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <span class="label light">Documentation</span>
+      <h1>Our Activities</h1>
+      <p>A record of everything Sukui No Te has done — our projects, events, and community efforts.</p>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="container">
+      <button class="filter-btn active" onclick="filterActivities('all', this)">All</button>
+      <button class="filter-btn" onclick="filterActivities('food', this)">Food Service</button>
+      <button class="filter-btn" onclick="filterActivities('events', this)">Events</button>
+      <button class="filter-btn" onclick="filterActivities('fundraising', this)">Fundraising</button>
+      <button class="filter-btn" onclick="filterActivities('environment', this)">Environment</button>
+    </div>
+  </div>
+
+  <!-- ACTIVITIES GRID -->
+  <main class="activities-main">
+    <div class="container">
+
+      <!-- COMING SOON state — remove this block and add activity cards below when ready -->
+      <div class="coming-soon">
+        <div class="coming-soon-icon">📋</div>
+        <h2>Documentation Coming Soon</h2>
+        <p>We're in the process of documenting all our activities and past events. Check back soon — this page will be filled with everything Sukui No Te has been up to.</p>
+        <a href="mailto:sukui.no.te.contact@gmail.com" class="btn-primary">Get In Touch</a>
+      </div>
+
+      <!--
+        ═══════════════════════════════════════════════════
+        ACTIVITY CARD TEMPLATE — copy and fill in when ready
+        ═══════════════════════════════════════════════════
+
+        <div class="activity-entry" data-category="food">
+          <div class="activity-img">
+            <img src="images/activity-name.jpg" alt="Activity name" />
+            <span class="activity-tag">Food Service</span>
+          </div>
+          <div class="activity-body">
+            <div class="activity-meta">
+              <span class="activity-date">📅 Month Year</span>
+              <span class="activity-members">👥 X members</span>
+            </div>
+            <h3>Activity Title</h3>
+            <p>Description of what we did, who we helped, and the impact we made.</p>
+            <div class="activity-impact">
+              <span>🎯 Impact: description here</span>
+            </div>
+          </div>
+        </div>
+
+        data-category options: food | events | fundraising | environment
+        ═══════════════════════════════════════════════════
+      -->
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="images/logo.png" alt="Sukui No Te" class="footer-logo" />
+      <div class="footer-right">
+        <p>YIS Service Group · Yokohama International School</p>
+        <a href="mailto:sukui.no.te.contact@gmail.com">sukui.no.te.contact@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    function filterActivities(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.activity-entry').forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'grid' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
