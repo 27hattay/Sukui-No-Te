@@ -57,12 +57,31 @@
   <main class="activities-main">
     <div class="container">
 
-      <!-- COMING SOON state — remove this block and add activity cards below when ready -->
-      <div class="coming-soon">
-        <div class="coming-soon-icon">📋</div>
-        <h2>Documentation Coming Soon</h2>
-        <p>We're in the process of documenting all our activities and past events. Check back soon — this page will be filled with everything Sukui No Te has been up to.</p>
-        <a href="mailto:sukui.no.te.contact@gmail.com" class="btn-primary">Get In Touch</a>
+      <div class="activities-grid">
+
+        <div class="activity-entry" data-category="events fundraising">
+          <div class="activity-img">
+            <img src="images/picnic1.png" alt="Community Picnic Event" />
+            <span class="activity-tag">Events · Fundraising</span>
+          </div>
+          <div class="activity-body">
+            <div class="activity-meta">
+              <span class="activity-date">📅 November 8</span>
+              <span class="activity-members">✍️ Taisei, Kai L · Published December 9, 2025</span>
+            </div>
+            <h3>Community Picnic Event</h3>
+            <p>Last year's food fair featured a sweet challenge: contestants had to guess the number of candies in the jar, with the closest guess winning the entire jar. Despite the popularity of the event, the time spent promoting the Sukui No Te cause was minimal. Additionally, many contestants found a loophole in the system: they would work together, each taking a minus one off their guess each time, getting one step closer to the answer, which, as a result, made the game underwhelming.</p>
+            <p>This year, the Sukui No Te team hosted a brand-new mini-game to collect sufficient funds for the weekly onigiri-making sessions. The mini-game consisted of a simple target shooting game, where children threw small balls into targets to win small bags of snacks and candies. As a result, the group successfully gathered around 14,000 yen in total. However, the same issues that plagued us last year would strike again. The game we hosted at the community picnic would prove successful in garnering funds. Although there was once again no promotion of the Sukui No Te cause, as it failed to foster community engagement.</p>
+            <div class="activity-photo-gallery">
+              <img src="images/picnic1.png" alt="Children at the candy table" />
+              <img src="images/picnic2.jpg" alt="Students running the target shooting game" />
+            </div>
+            <div class="activity-impact">
+              <span>🎯 Impact: Raised ~¥14,000 for weekly onigiri-making sessions</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!--
@@ -115,7 +134,8 @@
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       document.querySelectorAll('.activity-entry').forEach(card => {
-        card.style.display = (category === 'all' || card.dataset.category === category) ? 'grid' : 'none';
+        const cats = card.dataset.category ? card.dataset.category.split(' ') : [];
+        card.style.display = (category === 'all' || cats.includes(category)) ? 'grid' : 'none';
       });
     }
   </script>
